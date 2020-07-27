@@ -341,12 +341,8 @@ public class LocalDateUtil {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public static long betweenTwoTime(LocalDate startTime, LocalDate endTime, ChronoUnit field) {
         Period period = Period.between(startTime, endTime);
-        if (field == ChronoUnit.YEARS) {
-            return period.getYears();
-        }
-        if (field == ChronoUnit.MONTHS) {
-            return period.getYears() * 12 + period.getMonths();
-        }
+        if (field == ChronoUnit.YEARS) return period.getYears();
+        if (field == ChronoUnit.MONTHS) return period.getYears() * 12 + period.getMonths();
         return field.between(startTime, endTime);
     }
 
