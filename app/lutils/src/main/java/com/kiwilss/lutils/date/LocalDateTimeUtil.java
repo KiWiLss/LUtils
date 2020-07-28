@@ -740,7 +740,7 @@ public class LocalDateTimeUtil {
      * @param second
      */
     @RequiresApi(api = Build.VERSION_CODES.O)
-    private static Boolean isSameWeek(LocalDateTime first, LocalDateTime second) {
+    public static Boolean isSameWeek(LocalDateTime first, LocalDateTime second) {
 //        两个时间差不超过7天,
         Period period = Period.between(first.toLocalDate(), second.toLocalDate());
         int years = period.getYears();

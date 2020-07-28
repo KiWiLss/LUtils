@@ -7,6 +7,7 @@ import androidx.annotation.RequiresApi;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 /**
@@ -490,6 +491,169 @@ public class LDateUtils {
     /**
      * ------------------------计算相关---------------------------
      */
+    /**获取两个日期相差的天数,后面日期大,返回正数,否则返回负数
+     * @param dateOne
+     * @param dateTwo
+     * @return
+             */
+    public static long betweenTwoTime(String dateOne, String dateTwo){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            LocalDateTime one = LocalDateTimeUtil.string2LocalDateTime(dateOne);
+            LocalDateTime two = LocalDateTimeUtil.string2LocalDateTime(dateTwo);
+            return LocalDateTimeUtil.betweenTwoTime(one,two).toDays();
+        } else {
+            return DateUtil.dayDiff(dateOne,dateOne,PATTEN_YMDHMS);
+        }
+    }
+
+    public static long betweenTwoTime(String dateOne, String dateTwo,String patten){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            LocalDateTime one = LocalDateTimeUtil.string2LocalDateTime(dateOne,patten);
+            LocalDateTime two = LocalDateTimeUtil.string2LocalDateTime(dateTwo,patten);
+            return LocalDateTimeUtil.betweenTwoTime(one,two).toDays();
+        } else {
+            return DateUtil.dayDiff(dateOne,dateOne,patten);
+        }
+    }
+
+    /**获取新增 number 年后的新日期,默认格式
+     * @param date
+     * @param number 正数增加,负数减少
+     * @return
+     */
+    public static String getPlusYear(String date,long number){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            LocalDateTime localDateTime = LocalDateTimeUtil.getPlus(LocalDateTimeUtil.string2LocalDateTime(date), number, ChronoUnit.YEARS);
+            return LocalDateTimeUtil.localDateTime2String(localDateTime);
+        } else {
+            return DateUtil.addYears(date, (int) number);
+        }
+    }
+    public static String getPlusYear(String date,String patten,long number){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            LocalDateTime localDateTime = LocalDateTimeUtil.getPlus(LocalDateTimeUtil.string2LocalDateTime(date,patten), number, ChronoUnit.YEARS);
+            return LocalDateTimeUtil.localDateTime2String(localDateTime,patten);
+        } else {
+            return DateUtil.addYears(date, patten,(int) number);
+        }
+    }
+
+    /**获取新增 number 月后的新日期,默认格式
+     * @param date
+     * @param number
+     * @return
+     */
+    public static String getPlusMonth(String date, long number){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            LocalDateTime localDateTime = LocalDateTimeUtil.getPlus(LocalDateTimeUtil.string2LocalDateTime(date), number, ChronoUnit.MONTHS);
+            return LocalDateTimeUtil.localDateTime2String(localDateTime);
+        } else {
+            return DateUtil.addMonth(date, (int) number);
+        }
+    }
+
+    public static String getPlusMonth(String date,String patten,long number){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            LocalDateTime localDateTime = LocalDateTimeUtil.getPlus(LocalDateTimeUtil.string2LocalDateTime(date,patten), number, ChronoUnit.MONTHS);
+            return LocalDateTimeUtil.localDateTime2String(localDateTime,patten);
+        } else {
+            return DateUtil.addMonth(date, patten,(int) number);
+        }
+    }
+
+    /**获取新增 number 天后的新日期,默认格式
+     * @param date
+     * @param number
+     * @return
+     */
+    public static String getPlusDay(String date, long number){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            LocalDateTime localDateTime = LocalDateTimeUtil.getPlus(LocalDateTimeUtil.string2LocalDateTime(date), number, ChronoUnit.DAYS);
+            return LocalDateTimeUtil.localDateTime2String(localDateTime);
+        } else {
+            return DateUtil.addDay(date, (int) number);
+        }
+    }
+
+    public static String getPlusDay(String date,String patten,long number){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            LocalDateTime localDateTime = LocalDateTimeUtil.getPlus(LocalDateTimeUtil.string2LocalDateTime(date,patten), number, ChronoUnit.DAYS);
+            return LocalDateTimeUtil.localDateTime2String(localDateTime,patten);
+        } else {
+            return DateUtil.addDay(date, patten,(int) number);
+        }
+    }
+
+    /**获取新增 number 小时后的新日期,默认格式
+     * @param date
+     * @param number
+     * @return
+     */
+    public static String getPlusHours(String date, long number){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            LocalDateTime localDateTime = LocalDateTimeUtil.getPlus(LocalDateTimeUtil.string2LocalDateTime(date), number, ChronoUnit.HOURS);
+            return LocalDateTimeUtil.localDateTime2String(localDateTime);
+        } else {
+            return DateUtil.addHour(date, (int) number);
+        }
+    }
+
+    public static String getPlusHours(String date,String patten,long number){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            LocalDateTime localDateTime = LocalDateTimeUtil.getPlus(LocalDateTimeUtil.string2LocalDateTime(date,patten), number, ChronoUnit.HOURS);
+            return LocalDateTimeUtil.localDateTime2String(localDateTime,patten);
+        } else {
+            return DateUtil.addHour(date, patten,(int) number);
+        }
+    }
+    /**获取新增 number 分钟后的新日期,默认格式
+     * @param date
+     * @param number
+     * @return
+     */
+    public static String getPlusMinutes(String date, long number){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            LocalDateTime localDateTime = LocalDateTimeUtil.getPlus(LocalDateTimeUtil.string2LocalDateTime(date), number, ChronoUnit.MINUTES);
+            return LocalDateTimeUtil.localDateTime2String(localDateTime);
+        } else {
+            return DateUtil.addMinute(date, (int) number);
+        }
+    }
+
+    public static String getPlusMinutes(String date,String patten,long number){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            LocalDateTime localDateTime = LocalDateTimeUtil.getPlus(LocalDateTimeUtil.string2LocalDateTime(date,patten), number, ChronoUnit.MINUTES);
+            return LocalDateTimeUtil.localDateTime2String(localDateTime,patten);
+        } else {
+            return DateUtil.addMinute(date, patten,(int) number);
+        }
+    }
+    /**获取新增 number 秒后的新日期,默认格式
+     * @param date
+     * @param number
+     * @return
+     */
+    public static String getPlusSecond(String date, long number){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            LocalDateTime localDateTime = LocalDateTimeUtil.getPlus(LocalDateTimeUtil.string2LocalDateTime(date), number, ChronoUnit.SECONDS);
+            return LocalDateTimeUtil.localDateTime2String(localDateTime);
+        } else {
+            Date date1 = DateUtil.string2Date(date);
+            Date date2 = DateUtil.addSecond(date1, (int) number);
+            return DateUtil.date2String(date2);
+        }
+    }
+
+    public static String getPlusSecond(String date,String patten,long number){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            LocalDateTime localDateTime = LocalDateTimeUtil.getPlus(LocalDateTimeUtil.string2LocalDateTime(date,patten), number, ChronoUnit.SECONDS);
+            return LocalDateTimeUtil.localDateTime2String(localDateTime,patten);
+        } else {
+            Date date1 = DateUtil.string2Date(date,patten);
+            Date date2 = DateUtil.addSecond(date1, (int) number);
+            return DateUtil.date2String(date2,patten);
+        }
+    }
 
     /**
      * ----------------------判断相关-----------------------
@@ -569,6 +733,117 @@ public class LDateUtils {
         }
     }
 
+    /**
+     * 是否是昨天
+     *
+     * @param date
+     * @return
+     */
+    public static boolean isYesterDay(String date) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            LocalDateTime localDateTime = LocalDateTimeUtil.string2LocalDateTime(date);
+            return LocalDateTimeUtil.isYesterday(localDateTime);
+        } else {
+            return DateUtil.isYesterDay(date);
+        }
+    }
+
+    public static boolean isYesterDay(String date, String patten) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            LocalDateTime localDateTime = LocalDateTimeUtil.string2LocalDateTime(date, patten);
+            return LocalDateTimeUtil.isYesterday(localDateTime);
+        } else {
+            return DateUtil.isYesterDay(date, patten);
+        }
+    }
+
+    /**
+     * 是否是同一天
+     *
+     * @param dateOne
+     * @param dateTwo
+     * @return
+     */
+    public static boolean isSameDay(String dateOne, String dateTwo) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            LocalDateTime one = LocalDateTimeUtil.string2LocalDateTime(dateOne);
+            LocalDateTime two = LocalDateTimeUtil.string2LocalDateTime(dateTwo);
+            return LocalDateTimeUtil.isSameDay(one, two);
+        } else {
+            return DateUtil.isSameDay(dateOne, dateTwo);
+        }
+    }
+
+    public static boolean isSameDay(String dateOne, String dateTwo, String patten) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            LocalDateTime one = LocalDateTimeUtil.string2LocalDateTime(dateOne, patten);
+            LocalDateTime two = LocalDateTimeUtil.string2LocalDateTime(dateTwo, patten);
+            return LocalDateTimeUtil.isSameDay(one, two);
+        } else {
+            return DateUtil.isSameDay(dateOne, dateTwo, patten);
+        }
+    }
+
+    /**
+     * 是否在同一周
+     *
+     * @param dateOne
+     * @param dateTwo
+     * @return
+     */
+    public static boolean isSameWeek(String dateOne, String dateTwo) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            LocalDateTime one = LocalDateTimeUtil.string2LocalDateTime(dateOne);
+            LocalDateTime two = LocalDateTimeUtil.string2LocalDateTime(dateTwo);
+            return LocalDateTimeUtil.isSameWeek(one, two);
+        } else {
+            return DateUtil.isSameWeekDates(dateOne, dateTwo);
+        }
+    }
+
+    public static boolean isSameWeek(String dateOne, String dateTwo, String patten) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            LocalDateTime one = LocalDateTimeUtil.string2LocalDateTime(dateOne, patten);
+            LocalDateTime two = LocalDateTimeUtil.string2LocalDateTime(dateTwo, patten);
+            return LocalDateTimeUtil.isSameWeek(one, two);
+        } else {
+            return DateUtil.isSameWeekDates(dateOne, dateTwo, patten);
+        }
+    }
+
+    /**
+     * 前一个日期在后一个日期之前,比后一个日期小
+     *
+     * @param dateOne
+     * @param dateTwo
+     * @return
+     */
+    public static boolean isBefore(String dateOne, String dateTwo) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            LocalDateTime one = LocalDateTimeUtil.string2LocalDateTime(dateOne);
+            LocalDateTime two = LocalDateTimeUtil.string2LocalDateTime(dateTwo);
+            return LocalDateTimeUtil.isBefore(one, two);
+        } else {
+            return DateUtil.checkDateFromTo2(dateOne, dateTwo);
+        }
+    }
+
+    /**
+     * 前面一个日期是否大于后面的日期
+     *
+     * @param dateOne
+     * @param dateTwo
+     * @return
+     */
+    public static boolean isAfter(String dateOne, String dateTwo) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            LocalDateTime one = LocalDateTimeUtil.string2LocalDateTime(dateOne);
+            LocalDateTime two = LocalDateTimeUtil.string2LocalDateTime(dateTwo);
+            return LocalDateTimeUtil.isAfter(one, two);
+        } else {
+            return DateUtil.checkDateFromTo2(dateTwo, dateOne);
+        }
+    }
 
 
 }

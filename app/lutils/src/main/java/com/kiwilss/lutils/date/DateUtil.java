@@ -554,6 +554,18 @@ public class DateUtil {
         }
     }
 
+    /**日期比较， 后面日期比前面的日期大返回 true, 否则返回 false
+     * @param dateFrom
+     * @param dateEnd
+     * @return
+     */
+    public static boolean checkDateFromTo2(String dateFrom, String dateEnd) {
+        if (checkDateCompare(dateFrom, dateEnd, COMPARE_TYPE_GT)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     /**
      * 判断前后日期对比。 如果后面的日期大于前面的日期， 返回true。 否则返回false。
      *
@@ -564,9 +576,9 @@ public class DateUtil {
      * @return boolean 比较结果
      */
     private static boolean checkDateCompare(String dateFromStr, String dateEndStr, String compareType) {
-        if (!checkIsActiveDate(dateFromStr) || !checkIsActiveDate(dateEndStr)) {
-            return false;
-        } else {
+//        if (!checkIsActiveDate(dateFromStr) || !checkIsActiveDate(dateEndStr)) {
+//            return false;
+//        } else {
             Date dateFrom = string2Date(dateFromStr, PATTEN_YMD);
             Date dateEnd = string2Date(dateEndStr, PATTEN_YMD);
 
@@ -586,7 +598,7 @@ public class DateUtil {
                     return true;
                 }
             }
-        }
+        //}
         return false;
     }
 
@@ -1108,6 +1120,29 @@ public class DateUtil {
     public static boolean isTomorrow(long time){
         return isTomorrow(millis2Date(time));
     }
+
+
+    /**是否是昨天
+     * @param date
+     * @return
+     */
+    public static boolean isYesterDay(Date date) {
+        Calendar calendar1 = getCalendar();
+        calendar1.setTime(date);
+
+        Calendar calendar2 = getCalendar();
+        calendar2.add(Calendar.DAY_OF_MONTH, -1);
+        return isSameDay(calendar1, calendar2);
+    }
+
+    public static boolean isYesterDay(String date){
+        return isYesterDay(string2Date(date));
+    }
+
+    public static boolean isYesterDay(String date,String patten){
+        return isYesterDay(string2Date(date,patten));
+    }
+
 
     /**获取 Calendar
      * @return
