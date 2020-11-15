@@ -151,6 +151,9 @@ object ResUtils {
     }
 
 
+    /**
+     * 获取资源图片的 Bitmap
+    */
     fun getBitmap(resId: Int) : Bitmap?{
         var bitmap: Bitmap? = null
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {

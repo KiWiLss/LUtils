@@ -12,6 +12,7 @@ import android.content.Context
 object LUtilsConfig{
 
     lateinit var mContext: Context
+
     fun init(context: Context) {
         mContext = context
     }
