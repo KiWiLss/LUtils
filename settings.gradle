@@ -1,4 +1,3 @@
-
-include ':app:lutils'
+include ':lutils'
 include ':app'
 rootProject.name = "LUtils"
