@@ -1,6 +1,7 @@
 package com.kiwilss.lutils
 
 import android.content.Context
+import com.kiwilss.lutils.res.DensityUtils
 
 /**
  * @author : Lss kiwilss
@@ -15,6 +16,7 @@ object LUtilsConfig{
 
     fun init(context: Context) {
         mContext = context
+
     }
 
     fun getContext() = mContext
