@@ -13,13 +13,13 @@ Android tools
 ​
 ​
 dependencies {
-            implementation 'com.github.KiWiLss:LUtils:0.0.2'
+            implementation 'com.github.KiWiLss:LUtils:1.0.2'
     }
 ```
 ​
 最新版:
 ​
-   ![](https://www.jitpack.io/v/KiWiLss/LUtils.svg)
+ ![](https://www.jitpack.io/v/KiWiLss/LUtils.svg)
 
 使用前要调用，获取到 Context：
 ```
