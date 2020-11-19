@@ -19,6 +19,7 @@ dependencies {
 ​
 最新版:
 ​
+
  ![](https://www.jitpack.io/v/KiWiLss/LUtils.svg)
 
 使用前要调用，获取到 Context：
