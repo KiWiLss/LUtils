@@ -16,7 +16,7 @@ object LUtilsConfig{
 
     fun init(context: Context) {
         mContext = context
-
+        DensityUtils.screenDpi
     }
 
     fun getContext() = mContext
