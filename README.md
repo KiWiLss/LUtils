@@ -1,36 +1,30 @@
 # LUtils
 Android tools
+
+​
 ## 一、导入
+```java
     allprojects {
         repositories {
             ...
             maven { url 'https://www.jitpack.io' }
         }
     }
-
-     最新版:
-
-       ![](https://www.jitpack.io/v/KiWiLss/LUtils.svg)
-
-
-## 一、导入
-```java
-	allprojects {
-		repositories {
-			...
-			maven { url 'https://www.jitpack.io' }
-		}
-	}
-
-
+​
+​
 dependencies {
-	        implementation 'com.github.KiWiLss:LUtils:1.0.2'
-	}
+            implementation 'com.github.KiWiLss:LUtils:0.0.2'
+    }
 ```
+​
+最新版:
+​
+   ![](https://www.jitpack.io/v/KiWiLss/LUtils.svg)
+
 使用前要调用，获取到 Context：
 ```
 object LUtilsConfig{
-
+​
     lateinit var mContext: Context
     fun init(context: Context) {
         mContext = context
