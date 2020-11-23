@@ -4,9 +4,9 @@ import java.text.DecimalFormat
 
 object DigitUtils{
 
-    const val five = "#.00000"
-    const val four = "#.0000"
-    const val two = "#.00"
+    const val five = "#0.00000"
+    const val four = "#0.0000"
+    const val two = "#0.00"
 
     /**
      * stirng -> double
