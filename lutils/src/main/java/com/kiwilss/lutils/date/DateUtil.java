@@ -2283,11 +2283,11 @@ public class DateUtil {
      */
     public static String string2String(String time, String timePattern, String returnPattern){
         if (TextUtils.isEmpty(time)){
-            return null;
+            return "";
         }
         Date date = string2Date(time, timePattern);
         if (date == null){
-            return null;
+            return "";
         }
         return date2String(date,returnPattern);
     }
