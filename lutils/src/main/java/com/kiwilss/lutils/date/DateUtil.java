@@ -404,6 +404,24 @@ public class DateUtil {
         return diff;
     }
 
+    /**计算两个日期之间间隔天数,传入的都是毫秒值
+     * @param startTime
+     * @param endTime
+     * @return
+     */
+    public static long dayDiff(long startTime, long endTime){
+        return (endTime - startTime) / (1000 * 60 * 60 * 24);
+    }
+
+    /**计算两个日期之间间隔天数,传入的都是秒值
+     * @param startTime
+     * @param endTime
+     * @return
+     */
+    public static long dayDiffSecond(long startTime, long endTime){
+        return (endTime - startTime) / (60 * 60 * 24);
+    }
+
     /**
      * 返回日时分秒
      *
