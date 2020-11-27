@@ -1,6 +1,7 @@
 package com.kiwilss.lutils.date;
 
 import android.annotation.SuppressLint;
+import android.text.TextUtils;
 
 import java.text.DateFormat;
 import java.text.Format;
@@ -2273,6 +2274,25 @@ public class DateUtil {
         }
         return null;
     }
+
+    /** string  ---> stirng
+     * @param time   时间
+     * @param timePattern 时间格式
+     * @param returnPattern 想要的时间格式
+     * @return
+     */
+    public static String string2String(String time, String timePattern, String returnPattern){
+        if (TextUtils.isEmpty(time)){
+            return null;
+        }
+        Date date = string2Date(time, timePattern);
+        if (date == null){
+            return null;
+        }
+        return date2String(date,returnPattern);
+    }
+
+
 
     /**
      * date 转成 string
