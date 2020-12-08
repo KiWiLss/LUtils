@@ -50,8 +50,6 @@ object DigitUtils{
         val doubleFormat = getDoubleFormat(pattern)
         return doubleFormat.format(dd)
     }
-
-
     /**
      * double --> string 保留dig位,不四舍五入
      * d: 数据源
@@ -74,6 +72,7 @@ object DigitUtils{
         }
         return result.subSequence(0, end).toString()
     }
+
     /**
      * string --> string 保留dig位,不四舍五入
      * d: 数据源
@@ -86,7 +85,19 @@ object DigitUtils{
         val dd = string2Double(string)
         return double2String(dd,dig)
     }
-
+    /**
+     * string --> string 保留dig位,不四舍五入,保留有效位
+     * d: 数据源
+     * dig: 保留小数点后几位
+     */
+    fun string2StringWip(string: String?, dig: Int = 2): String{
+        if (string.isNullOrEmpty()) {
+            return ""
+        }
+        val dd = string2Double(string)
+        val ss = double2String(dd,dig)
+        return stringWipeZero(ss)
+    }
     /**
      * doulble  ---->  string
      * .0 会去除掉
@@ -100,5 +111,14 @@ object DigitUtils{
         return decimalFormat.format(double)
     }
 
+    fun stringWipeZero(amount: String?): String{
+        if (amount.isNullOrEmpty()){
+            return ""
+        }
+        val double = string2Double(amount)
+        val decimalFormat =
+            DecimalFormat("###################.###########")
+        return decimalFormat.format(double)
+    }
 
 }

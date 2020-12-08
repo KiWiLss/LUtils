@@ -31,6 +31,7 @@ public class DateUtil {
     /**
      * 默认格式
      */
+    @SuppressLint("SimpleDateFormat")
     private static final DateFormat DEFAULT_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     /**
