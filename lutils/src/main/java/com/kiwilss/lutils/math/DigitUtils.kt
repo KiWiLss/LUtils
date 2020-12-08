@@ -4,6 +4,7 @@ import java.text.DecimalFormat
 
 object DigitUtils{
 
+    const val ten = "#0.0000000000"
     const val five = "#0.00000"
     const val four = "#0.0000"
     const val two = "#0.00"
@@ -59,7 +60,7 @@ object DigitUtils{
         if (d == null) {
             return ""
         }
-        val doubleFormat = getDoubleFormat(five)
+        val doubleFormat = getDoubleFormat(ten)
         val result = doubleFormat.format(d)
 
         var index = result.indexOf(".")
