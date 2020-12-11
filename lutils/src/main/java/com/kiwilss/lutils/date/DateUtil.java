@@ -45,6 +45,8 @@ public class DateUtil {
      * 日期格式yyyy-MM-dd
      */
     public static String PATTEN_YMD = "yyyy-MM-dd";
+
+    public static String PATTEN_YM = "yyyy-MM";
     /**
      * 日期格式yyyy年MM月dd日
      */
@@ -96,7 +98,6 @@ public class DateUtil {
 
     public static void main(String[] args) {
         System.out.println("------------------------");
-        System.out.println(getNowMonth());
 
 //        System.out.println(date2String(setMonths(getNowDate(),5)));
 //        System.out.println(addMonth("2019-05-22",PATTEN_YMD,5));
@@ -213,6 +214,17 @@ public class DateUtil {
 //                + getNowHour() + "时--" + getNowMinute() + "分---" + getNowSecond() + "秒");
 //
 //        System.out.println(getLastDaysOfMonth(2019, 5));
+            //判断相差月份
+//        System.out.println(getDifferMonth("2019-05-17 18:34:16","2019-05-17 18:34:16"));
+//        System.out.println(getDifferMonth("2019-05-17 18:34:16","2020-05-17 18:34:16"));
+//        System.out.println(getDifferMonth("2019-05-17 18:34:16","2019-12-17 18:34:16"));
+//        System.out.println(getDifferMonth("2019-05-17","2019-12-17",PATTEN_YMD));
+        System.out.println(getDifferMonth("2019-05","2019-12",PATTEN_YM));
+
+
+
+
+
     }
 
 
@@ -2136,8 +2148,8 @@ public class DateUtil {
 
     /**
      * 比较两个时间的时间差
-     *
-     * @param time1
+     *只能获取天, 时,分,秒
+      * @param time1
      * @param time2
      * @param unit
      * @return
@@ -2166,12 +2178,45 @@ public class DateUtil {
         return millis / unit;
     }
 
+
     /**
-     * 判断是否是今天
-     *
-     * @param time
+     * 获取两个日期的月数差
+     * @param fromDate
+     * @param toDate
      * @return
      */
+    public static long getDifferMonth(Date fromDate, Date toDate) {
+        Calendar fromDateCal = Calendar.getInstance();
+        Calendar toDateCal = Calendar.getInstance();
+        fromDateCal.setTime(fromDate);
+        toDateCal.setTime(toDate);
+
+        int fromYear = fromDateCal.get(Calendar.YEAR);
+        int toYear = toDateCal.get((Calendar.YEAR));
+        if (fromYear == toYear) {
+            return Math.abs(fromDateCal.get(Calendar.MONTH) - toDateCal.get(Calendar.MONTH));
+        } else {
+            int fromMonth = 12 - (fromDateCal.get(Calendar.MONTH) + 1);
+            int toMonth = toDateCal.get(Calendar.MONTH) + 1;
+            return Math.abs(toYear - fromYear - 1) * 12 + fromMonth + toMonth;
+        }
+    }
+
+    public static long getDifferMonth(String fromDate, String toDate,String pattern) {
+        return getDifferMonth(string2Date(fromDate,pattern),string2Date(toDate,pattern));
+    }
+
+    public static long getDifferMonth(String fromDate, String toDate) {
+        return getDifferMonth(string2Date(fromDate),string2Date(toDate));
+    }
+
+
+        /**
+         * 判断是否是今天
+         *
+         * @param time
+         * @return
+         */
     public static boolean isToday(String time) {
         return isToday(string2Millis(time, DEFAULT_FORMAT));
     }

@@ -25,7 +25,9 @@ public class LDateUtils {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public static void main(String[] args) {
         System.out.println("------------------");
-
+        System.out.println(betweenTwoTimeMonth("2019-05-17 18:34:16","2019-05-17 18:34:16"));
+        System.out.println(betweenTwoTimeMonth("2019-05-17 18:34:16","2020-05-17 18:34:16"));
+        System.out.println(betweenTwoTimeMonth("2019-05-17","2019-05-17",PATTEN_YMD));
 
     }
 
@@ -515,6 +517,27 @@ public class LDateUtils {
             return DateUtil.dayDiff(dateOne,dateOne,patten);
         }
     }
+
+    public static long betweenTwoTimeMonth(String dateOne, String dateTwo){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            LocalDateTime one = LocalDateTimeUtil.string2LocalDateTime(dateOne);
+            LocalDateTime two = LocalDateTimeUtil.string2LocalDateTime(dateTwo);
+            return LocalDateTimeUtil.betweenTwoTime(one,two,ChronoUnit.MONTHS);
+        } else {
+            return DateUtil.getDifferMonth(dateOne,dateTwo);
+        }
+    }
+
+    public static long betweenTwoTimeMonth(String dateOne, String dateTwo,String pattern){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            LocalDateTime one = LocalDateTimeUtil.string2LocalDateTime(dateOne,pattern);
+            LocalDateTime two = LocalDateTimeUtil.string2LocalDateTime(dateTwo,pattern);
+            return LocalDateTimeUtil.betweenTwoTime(one,two,ChronoUnit.MONTHS);
+        } else {
+            return DateUtil.getDifferMonth(dateOne,dateTwo,pattern);
+        }
+    }
+
 
     /**获取新增 number 年后的新日期,默认格式
      * @param date
