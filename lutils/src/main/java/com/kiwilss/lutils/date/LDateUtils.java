@@ -518,6 +518,9 @@ public class LDateUtils {
         }
     }
 
+    /**
+     * 获取两个日期相差的月数
+    */
     public static long betweenTwoTimeMonth(String dateOne, String dateTwo){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             LocalDateTime one = LocalDateTimeUtil.string2LocalDateTime(dateOne);
