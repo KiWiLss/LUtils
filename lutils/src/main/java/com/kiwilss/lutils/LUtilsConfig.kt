@@ -1,5 +1,6 @@
 package com.kiwilss.lutils
 
+import android.annotation.SuppressLint
 import android.content.Context
 import com.kiwilss.lutils.res.DensityUtils
 
@@ -10,6 +11,7 @@ import com.kiwilss.lutils.res.DensityUtils
  * @time : 2020/7/27
  * @desc : {DESCRIPTION}
  */
+@SuppressLint("StaticFieldLeak")
 object LUtilsConfig{
 
     lateinit var mContext: Context
