@@ -44,6 +44,7 @@ object LUtilsConfig{
    DensityUtils_屏幕密度工具类_
 ### 2.3 数字相关
 [数字相关工具类](https://www.yuque.com/bibly/selhsz/ncde4q)
+
 [随机数相关](https://www.yuque.com/bibly/selhsz/fqq76l)
 ### 2.4 日期相关
 [日期相关工具类](https://www.yuque.com/bibly/selhsz/odrol4)
