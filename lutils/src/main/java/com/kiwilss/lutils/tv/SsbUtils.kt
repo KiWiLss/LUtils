@@ -17,7 +17,7 @@ import com.kiwilss.lutils.res.ResUtils
  *@author : Lss Administrator
  * @e-mail : kiwilss@163.com
  * @time   : 2020/11/16
- * @desc   : {DESCRIPTION}
+ * @desc   : {SpannableStringBuilder工具类}
  */
 class SsbUtils private constructor() {
 

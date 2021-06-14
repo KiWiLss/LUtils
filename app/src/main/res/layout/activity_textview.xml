@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvTvOne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="改变整个 textview"/>
+
+        <TextView
+            android:id="@+id/tvTvOne2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="改变整个 textview,设置加粗"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:id="@+id/tvTv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="改变部分,设置加粗"
+            android:layout_marginTop="5dp"/>
+        <TextView
+            android:id="@+id/tvTv6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="改变部分,设置点击"
+            android:layout_marginTop="5dp"/>
+        <TextView
+            android:id="@+id/tvTv7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="改变部分,设置超链接"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:id="@+id/tvTv3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="改变部分,设置加粗和倾斜"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:id="@+id/tvTv4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="改变部分,设置加粗和倾斜改变颜色"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:id="@+id/tvTv5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="改变多个部分,分别设置加粗和倾斜改变颜色"
+            android:layout_marginTop="5dp"/>
+
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

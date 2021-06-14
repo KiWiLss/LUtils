@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="m15">14.40dp</dimen>
+    <dimen name="m16">15.36dp</dimen>
+    <dimen name="m17">16.32dp</dimen>
+    <dimen name="m18">17.28dp</dimen>
+    <dimen name="m19">18.24dp</dimen>
+    <dimen name="m20">19.20dp</dimen>
+
+
+
+</resources>
