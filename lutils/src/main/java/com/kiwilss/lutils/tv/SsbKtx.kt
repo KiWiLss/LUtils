@@ -40,7 +40,7 @@ fun CharSequence?.isNotNullOrEmpty() = !isNullOrEmpty()
  */
 fun CharSequence.range(target: CharSequence): IntRange {
     val start = this.indexOf(target.toString())
-    return start..target.length
+    return start..(start + target.length)
 }
 
 /**

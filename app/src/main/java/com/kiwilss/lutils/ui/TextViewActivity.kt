@@ -32,8 +32,12 @@ class TextViewActivity: AppCompatActivity(R.layout.activity_textview) {
         //设置加粗倾斜效果
         tvTv3.typeSpan(range = 0..4,type = SsbKtx.type_bold_italic)
 
-        //加粗倾斜和文字颜色
-        tvTv4.typeSpan(range = 0..4,type = SsbKtx.type_bold_italic)
+        //加粗倾斜和文字颜色,对同一个部分做多种效果,只能第一个设置 src
+//        tvTv4.typeSpan(range = 0..4,type = SsbKtx.type_bold_italic)
+//            .foregroundColorIntSpan(range = 0..4,color = Color.GREEN)
+//            .strikethroughSpan(range = 0..4)
+        tvTv4.typeSpan(src = "只能这个可以设置 src,后面的再设置会导致前面效果无效",
+            range = 0..4,type = SsbKtx.type_bold_italic)
             .foregroundColorIntSpan(range = 0..4,color = Color.GREEN)
             .strikethroughSpan(range = 0..4)
         //对多个部分分别设置
@@ -52,6 +56,10 @@ class TextViewActivity: AppCompatActivity(R.layout.activity_textview) {
 //        tvTv7.text = ssb
 
         //第二种,对要设置的内容 src 拼接使用
+        tvTv8.text = "拼接一段文字"
+        tvTv8.appendTypeSpan("加粗",SsbKtx.type_bold)
+            .strikethroughSpan(target = "加粗")//对同一部分文字做多个效果
+            .appendForegroundColorIntSpan("改变字体颜色",Color.RED)
 
 
     }
