@@ -48,3 +48,6 @@ object LUtilsConfig{
 [随机数相关](https://www.yuque.com/bibly/selhsz/fqq76l)
 ### 2.4 日期相关
 [日期相关工具类](https://www.yuque.com/bibly/selhsz/odrol4)
+
+### 2.5 路由跳转相关
+[使用 Fragment 处理 onActivityResult](https://www.yuque.com/bibly/selhsz/dzzsyk#Sr423)
