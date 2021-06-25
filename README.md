@@ -13,7 +13,7 @@ Android tools
 ​
 ​
 dependencies {
-            implementation 'com.github.KiWiLss:LUtils:1.0.2'
+            implementation 'com.github.KiWiLss:LUtils:1.1.0'
     }
 ```
 ​
