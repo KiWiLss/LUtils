@@ -14,7 +14,7 @@ import java.io.Serializable
  */
 @SuppressLint("StaticFieldLeak")
 object LUtilsConfig {
-
+    const val SP_DEFAULT_NAME = "sp_default_name"
     lateinit var mContext: Context
 
     fun init(context: Context) {

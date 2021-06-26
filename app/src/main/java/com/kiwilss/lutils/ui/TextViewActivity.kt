@@ -6,6 +6,8 @@ import android.text.method.LinkMovementMethod
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.kiwilss.lutils.R
+import com.kiwilss.lutils.ktx.putString
+import com.kiwilss.lutils.ktx.sp
 import com.kiwilss.lutils.tv.*
 import kotlinx.android.synthetic.main.activity_textview.*
 
@@ -62,5 +64,37 @@ class TextViewActivity: AppCompatActivity(R.layout.activity_textview) {
             .appendForegroundColorIntSpan("改变字体颜色",Color.RED)
 
 
+    }
+
+    private fun testSp() {
+        //保存常规数据
+        //保存一个
+        sp().putString("key","hhhhh")
+        //保存多个
+        /*    sp().edit {
+                putInt(SpKey.TEST,2)
+                putString(SpKey.HELLO,"hello")
+            }*/
+        //获取保存常规数据
+        /*  val hello = sp().getString(SpKey.TEST,"")
+          Log.e("MMM", "testSp: $hello" )*/
+        //保存对象
+/*      sp().putAny(SpKey.TEST,TestBean(true,"alice"))
+      //获取保存对象
+      val test = sp().getAny<TestBean>(SpKey.TEST)
+      Log.e("MMM", "testSp: ${test?.name}" )*/
+        //保存list
+        /*  val list = listOf(TestBean(true,"alice"),TestBean(true,"bob"))
+          sp().putAny(SpKey.TEST,list)*/
+        //获取保存的list
+        /*   val testList = sp().getList<TestBean>(SpKey.TEST)
+           Log.e("MMM", "testSp: $testList" )*/
+
+        /* //清除某个数据
+         sp().clear(SpKey.HELLO)
+         //清除当前name下的所有数据
+         sp().clear()*/
+
+        //sp().getAny("",TestBean::class.java)
     }
 }

@@ -51,3 +51,9 @@ object LUtilsConfig{
 
 ### 2.5 路由跳转相关
 [使用 Fragment 处理 onActivityResult](https://www.yuque.com/bibly/selhsz/dzzsyk#Sr423)
+
+### 2.6 json 解析相关
+[Gson解析封装](https://www.yuque.com/bibly/selhsz/gxumid)
+
+### 2.7 数据库相关
+[SharedPreferences封装](https://www.yuque.com/bibly/selhsz/sd2w3g)
