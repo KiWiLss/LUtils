@@ -74,6 +74,16 @@ object IntentKtx {
     }
 }
 
+/**
+ *生成跳转的Intent并添加参数
+ * @param T
+ * @param pair
+ */
+inline fun <reified T> Context.createIntent(vararg pair: Pair<String, Any?>) =
+    Intent(this, T::class.java).apply {
+        addPair(*pair)
+    }
+
 fun Intent?.addPair(vararg params: Pair<String, Any?>): Intent? {
     return this?.also { IntentKtx.addPair(it, *params) }
 }
