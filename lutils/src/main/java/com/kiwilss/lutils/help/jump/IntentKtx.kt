@@ -1,7 +1,10 @@
 package com.kiwilss.lutils.help.jump
 
+import android.annotation.SuppressLint
+import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.os.Parcelable
 import androidx.fragment.app.Fragment
@@ -218,3 +221,115 @@ inline fun <reified T> Fragment?.startActivityForResultK(
     ActivityHelper.init(this?.context)
         ?.startActivityForResult<T>(callback, *pair)
 }
+
+/**
+ *跳转到浏览器
+ * @param url
+ * @param newTask
+ * @return
+ */
+fun Context.browse(url: String, newTask: Boolean = false): Boolean {
+    return try {
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.data = Uri.parse(url)
+        if (newTask) {
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+        startActivity(intent)
+        true
+    } catch (e: ActivityNotFoundException) {
+        e.printStackTrace()
+        false
+    }
+}
+
+/**
+ *跳转到浏览器
+ * @param url
+ * @param newTask
+ * @return
+ */
+fun Fragment.browse(url: String, newTask: Boolean = false) = activity?.browse(url, newTask)
+
+/**
+ *原生调用分享，只能分享文本
+ * @param text
+ * @param subject
+ * @param title
+ * @return
+ */
+fun Context.share(text: String, subject: String = "", title: String? = null): Boolean {
+    return try {
+        val intent = Intent(android.content.Intent.ACTION_SEND)
+        intent.type = "text/plain"
+        intent.putExtra(android.content.Intent.EXTRA_SUBJECT, subject)
+        intent.putExtra(android.content.Intent.EXTRA_TEXT, text)
+        startActivity(Intent.createChooser(intent, title))
+        true
+    } catch (e: ActivityNotFoundException) {
+        e.printStackTrace()
+        false
+    }
+}
+
+/**
+ *发送邮件
+ * @param email
+ * @param subject
+ * @param text
+ * @return
+ */
+@SuppressLint("QueryPermissionsNeeded")
+fun Context.email(email: String, subject: String = "", text: String = ""): Boolean {
+    val intent = Intent(Intent.ACTION_SENDTO)
+    intent.data = Uri.parse("mailto:")
+    intent.putExtra(Intent.EXTRA_EMAIL, arrayOf(email))
+    if (subject.isNotEmpty())
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject)
+    if (text.isNotEmpty())
+        intent.putExtra(Intent.EXTRA_TEXT, text)
+    if (intent.resolveActivity(packageManager) != null) {
+        startActivity(intent)
+        return true
+    }
+    return false
+}
+
+/**
+ *拨打电话
+ * @param number
+ * @return
+ */
+@SuppressLint("MissingPermission")
+fun Context.makeCall(number: String): Boolean {
+    return try {
+        val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:$number"))
+        startActivity(intent)
+        true
+    } catch (e: Exception) {
+        e.printStackTrace()
+        false
+    }
+}
+
+fun Fragment.markCall(number: String) = context?.makeCall(number)
+
+/**
+ *发送短信
+ * @param number
+ * @param text
+ * @return
+ */
+fun Context.sendSMS(number: String, text: String = ""): Boolean {
+    return try {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("sms:$number"))
+        intent.putExtra("sms_body", text)
+        startActivity(intent)
+        true
+    } catch (e: Exception) {
+        e.printStackTrace()
+        false
+    }
+}
+
+fun Fragment.sendSMS(number: String, text: String = "") = context

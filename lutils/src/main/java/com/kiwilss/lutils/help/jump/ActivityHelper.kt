@@ -16,10 +16,10 @@ class ActivityHelper private constructor(activity: FragmentActivity) {
     }
 
     companion object {
-//        fun init(activity: FragmentActivity?): ActivityHelper? {
-//            if (activity != null) return ActivityHelper(activity)
-//            return null
-//        }
+        fun init(activity: FragmentActivity?): ActivityHelper? {
+            if (activity != null) return ActivityHelper(activity)
+            return null
+        }
 
         fun init(context: Context?): ActivityHelper? {
             if (context is FragmentActivity) return ActivityHelper(context)
