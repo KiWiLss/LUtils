@@ -7,8 +7,11 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.os.Parcelable
+import android.util.Log
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import java.io.Serializable
+
 
 object IntentKtx {
     fun addPair(intent: Intent, vararg params: Pair<String, Any?>) {
@@ -296,20 +299,34 @@ fun Context.email(email: String, subject: String = "", text: String = ""): Boole
 }
 
 /**
- *拨打电话
+ *拨打电话,需要权限permission.CALL_PHONE才能拨打
  * @param number
  * @return
  */
 @SuppressLint("MissingPermission")
-fun Context.makeCall(number: String): Boolean {
+fun Context.makeCallPermission(number: String): Boolean {
     return try {
         val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:$number"))
         startActivity(intent)
         true
     } catch (e: Exception) {
         e.printStackTrace()
+        Log.e("MMM", ": ${e.message}");
         false
     }
+}
+
+fun Fragment.markCallPermission(number: String) = context?.makeCallPermission(number)
+
+/**
+ *拨打电话,不需要权限,跳转到拨打电话界面
+ * @param number
+ * @return
+ */
+fun Context.makeCall(number: String) {
+    val uri = Uri.parse("tel:$number")
+    val it = Intent(Intent.ACTION_DIAL, uri)
+    startActivity(it)
 }
 
 fun Fragment.markCall(number: String) = context?.makeCall(number)

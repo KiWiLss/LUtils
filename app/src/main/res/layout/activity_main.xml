@@ -16,7 +16,12 @@
            android:layout_height="wrap_content"
            android:text="textview"
            android:textAllCaps="false"/>
-
+       <Button
+           android:id="@+id/btnMainCall"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="拨打电话"
+           android:textAllCaps="false"/>
 
 
    </LinearLayout>
