@@ -1,11 +1,16 @@
 package com.kiwilss.lutils.ui
 
+import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.kiwilss.lutils.R
+import com.kiwilss.lutils.help.jump.ActivityHelper
+import com.kiwilss.lutils.help.jump.createIntent
+import com.kiwilss.lutils.help.jump.startActivityForResultK
 import com.kiwilss.lutils.ktx.putString
 import com.kiwilss.lutils.ktx.sp
 import com.kiwilss.lutils.tv.*
@@ -18,6 +23,19 @@ import kotlinx.android.synthetic.main.activity_textview.*
  * @desc   : {DESCRIPTION}
  */
 class TextViewActivity: AppCompatActivity(R.layout.activity_textview) {
+    companion object{
+
+        fun starter(context: Context, tv: String?, hai: String?, callback: ((Int, Intent?) -> Unit)?){
+            val intent = context.createIntent<TextViewActivity>("tv" to tv, "hai" to hai)
+            ActivityHelper.init(context)
+                ?.startActivityForResult(intent,callback)
+        }
+        fun starter2(context: Context, tv: String?, hai: String?, callback: ((Int, Intent?) -> Unit)?){
+            val intent = context.createIntent<TextViewActivity>("tv" to tv, "hai" to hai)
+            context.startActivityForResultK(intent,callback)
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
