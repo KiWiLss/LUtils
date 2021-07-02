@@ -1,26 +1,20 @@
 # LUtils
 Android tools ,如果觉得有帮助, 喜欢的话希望给个 Star 或 Fork ^_^ ，谢谢
 
-​
 ## 一、导入
-```java
+```
     allprojects {
         repositories {
             ...
             maven { url 'https://www.jitpack.io' }
         }
     }
-​
-​
+
 dependencies {
             implementation 'com.github.KiWiLss:LUtils:1.1.0'
     }
 ```
-​
-最新版:
-​
-
- ![](https://www.jitpack.io/v/KiWiLss/LUtils.svg)
+最新版:![](https://www.jitpack.io/v/KiWiLss/LUtils.svg)
 
 使用前要调用，获取到 Context, 可以在 Application 里调用：
 ```
@@ -39,9 +33,9 @@ object LUtilsConfig{
 
 ### 2.2 资源相关工具类
 #### 2.2.1 [安卓资源相关工具类](https://www.yuque.com/bibly/selhsz/txmw31)
-包含：ResUtils本地资源获取工具类
-   KeyboardUtils键盘相关工具类
-   DensityUtils_屏幕密度工具类_
+    包含：ResUtils本地资源获取工具类
+    KeyboardUtils键盘相关工具类
+    DensityUtils_屏幕密度工具类
 ### 2.3 数字相关
 [数字相关工具类](https://www.yuque.com/bibly/selhsz/ncde4q)
 
