@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.annotation.ColorRes
 import androidx.annotation.DimenRes
 import androidx.annotation.RequiresApi
+import com.kiwilss.lutils.ktx.isNotNullOrEmpty
 import com.kiwilss.lutils.res.DensityUtils
 import com.kiwilss.lutils.res.ResUtils
 
@@ -28,10 +29,7 @@ object SsbKtx {
 
 }
 //-------------------CharSequence相关扩展-----------------------
-/**
- *CharSequence不为 null 或者 empty
- */
-fun CharSequence?.isNotNullOrEmpty() = !isNullOrEmpty()
+
 
 /**
  *获取一段文字在文字中的范围

@@ -82,6 +82,7 @@ class TextViewActivity: AppCompatActivity(R.layout.activity_textview) {
             .appendForegroundColorIntSpan("改变字体颜色",Color.RED)
 
 
+        "f".isNotNullOrEmpty()
     }
 
     private fun testSp() {

@@ -22,7 +22,7 @@ dependencies {
 
  ![](https://www.jitpack.io/v/KiWiLss/LUtils.svg)
 
-使用前要调用，获取到 Context：
+使用前要调用，获取到 Context, 可以在 Application 里调用：
 ```
 object LUtilsConfig{
 ​
@@ -57,3 +57,6 @@ object LUtilsConfig{
 
 ### 2.7 数据库相关
 [SharedPreferences封装](https://www.yuque.com/bibly/selhsz/sd2w3g)
+
+### 2.8 字符相关
+[CharSequence 相关扩展收集](https://www.yuque.com/bibly/selhsz/rkn7so)
