@@ -85,10 +85,16 @@ object IntentKtx {
  * @param T
  * @param pair
  */
-inline fun <reified T> Context.createIntent(vararg pair: Pair<String, Any?>) =
+inline fun <reified T> Context.createIntentStart(vararg pair: Pair<String, Any?>) =
     Intent(this, T::class.java).apply {
         addPair(*pair)
     }
+
+/**
+ *生成Intent添加参数,也可以不添加
+ */
+fun Context.createIntent(vararg pair: Pair<String, Any?>) = Intent().addPair(*pair)
+
 
 fun Intent?.addPair(vararg params: Pair<String, Any?>): Intent? {
     return this?.also { IntentKtx.addPair(it, *params) }

@@ -10,7 +10,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.kiwilss.lutils.R
 import com.kiwilss.lutils.help.jump.ActivityHelper
 import com.kiwilss.lutils.help.jump.createIntent
+import com.kiwilss.lutils.help.jump.createIntentStart
 import com.kiwilss.lutils.help.jump.startActivityForResultK
+import com.kiwilss.lutils.ktx.isNotNullOrEmpty
 import com.kiwilss.lutils.ktx.putString
 import com.kiwilss.lutils.ktx.sp
 import com.kiwilss.lutils.tv.*
@@ -26,12 +28,12 @@ class TextViewActivity: AppCompatActivity(R.layout.activity_textview) {
     companion object{
 
         fun starter(context: Context, tv: String?, hai: String?, callback: ((Int, Intent?) -> Unit)?){
-            val intent = context.createIntent<TextViewActivity>("tv" to tv, "hai" to hai)
+            val intent = context.createIntentStart<TextViewActivity>("tv" to tv, "hai" to hai)
             ActivityHelper.init(context)
                 ?.startActivityForResult(intent,callback)
         }
         fun starter2(context: Context, tv: String?, hai: String?, callback: ((Int, Intent?) -> Unit)?){
-            val intent = context.createIntent<TextViewActivity>("tv" to tv, "hai" to hai)
+            val intent = context.createIntentStart<TextViewActivity>("tv" to tv, "hai" to hai)
             context.startActivityForResultK(intent,callback)
         }
     }
