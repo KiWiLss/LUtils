@@ -1,6 +1,7 @@
 package com.kiwilss.lutils.res
 
 import android.content.Context
+import android.content.res.Resources
 import android.content.res.TypedArray
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -25,26 +26,27 @@ import com.kiwilss.lutils.LUtilsConfig
  */
 object ResUtils {
 
-     private fun getContext() : Context = LUtilsConfig.getContext()
+    private fun getContext(): Context = LUtilsConfig.getContext()
 
     /**
      * 获取resources对象
-    */
+     */
     fun getResources() = getContext().resources
+
     /**
      * 获取资源Color值
      */
-    fun getColor(@ColorRes resId: Int) = ContextCompat.getColor(getContext(),resId)
+    fun getColor(@ColorRes resId: Int) = ContextCompat.getColor(getContext(), resId)
 
     /**
      * 获取资源String值
-    */
+     */
     fun getString(@StringRes resId: Int) = getContext().resources.getString(resId)
 
     /**
      * 获取资源Drawable值
-    */
-    fun getDrawable(@DrawableRes resId: Int) =  ContextCompat.getDrawable(getContext(),resId)
+     */
+    fun getDrawable(@DrawableRes resId: Int) = ContextCompat.getDrawable(getContext(), resId)
 
     /**
      * 获取Drawable的数组
@@ -71,17 +73,21 @@ object ResUtils {
 
     /**
      * 获取资源精确的dimens值
-    */
+     */
     fun getDimens(@DimenRes resId: Int) = getContext().resources.getDimension(resId)
 
     //返回的是【去余取整】的值
-    fun getDimensionPixelOffset(@DimenRes resId: Int) = getContext().resources.getDimensionPixelOffset(resId)
+    fun getDimensionPixelOffset(@DimenRes resId: Int) =
+        getContext().resources.getDimensionPixelOffset(resId)
+
     //返回的是【4舍5入】的值
-    fun getDimensionPixelSize(@DimenRes resId: Int) = getContext().resources.getDimensionPixelSize(resId)
+    fun getDimensionPixelSize(@DimenRes resId: Int) =
+        getContext().resources.getDimensionPixelSize(resId)
+
     /**
      * 获取ColorStateList值
-    */
-    fun getColors(@ColorRes resId: Int) = ContextCompat.getColorStateList(getContext(),resId)
+     */
+    fun getColors(@ColorRes resId: Int) = ContextCompat.getColorStateList(getContext(), resId)
 
     /**
      * 获取字符串的数组
@@ -153,13 +159,15 @@ object ResUtils {
 
     /**
      * 获取资源图片的 Bitmap
-    */
-    fun getBitmap(resId: Int) : Bitmap?{
+     */
+    fun getBitmap(resId: Int): Bitmap? {
         var bitmap: Bitmap? = null
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
             val vectorDrawable: Drawable = getContext().getDrawable(resId) ?: return bitmap
-            bitmap = Bitmap.createBitmap(vectorDrawable.intrinsicWidth,
-                    vectorDrawable.intrinsicHeight, Bitmap.Config.ARGB_8888)
+            bitmap = Bitmap.createBitmap(
+                vectorDrawable.intrinsicWidth,
+                vectorDrawable.intrinsicHeight, Bitmap.Config.ARGB_8888
+            )
             val canvas = Canvas(bitmap!!)
             vectorDrawable.setBounds(0, 0, canvas.width, canvas.height)
             vectorDrawable.draw(canvas)
@@ -172,4 +180,19 @@ object ResUtils {
 
 }
 
-//fun Any.color(@ColorRes colorRes: Int)  = ResUtils.getColor(colorRes)
+fun Any?.getResource(): Resources = ResUtils.getResources()
+
+fun Any?.getColor(@ColorRes colorRes: Int) = ResUtils.getColor(colorRes)
+
+fun Any?.getString(@StringRes resId: Int) = ResUtils.getString(resId)
+
+fun Any?.getDrawable(@DrawableRes resId: Int) = ResUtils.getDrawable(resId)
+
+fun Any?.getDimens(@DimenRes resId: Int) = ResUtils.getDimens(resId)
+fun Any?.getDimensionPixelOffset(@DimenRes resId: Int) = ResUtils.getDimensionPixelOffset(resId)
+fun Any?.getDimensionPixelSize(@DimenRes resId: Int) = ResUtils.getDimensionPixelSize(resId)
+
+fun Any?.getAnim(@AnimRes resId: Int) = ResUtils.getAnim(resId)
+
+fun Any?.getBitmap(resId: Int) = ResUtils.getBitmap(resId)
+

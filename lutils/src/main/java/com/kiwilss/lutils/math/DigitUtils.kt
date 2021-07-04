@@ -8,6 +8,7 @@ object DigitUtils{
     const val five = "#0.00000"
     const val four = "#0.0000"
     const val two = "#0.00"
+    const val none = "###################.###########"
 
     /**
      * stirng -> double
@@ -101,14 +102,14 @@ object DigitUtils{
     }
     /**
      * doulble  ---->  string
-     * .0 会去除掉
+     * .0 会去除掉,去除无效值
      */
     fun doubleWipeZero(double: Double?): String{
         if (double == null){
             return ""
         }
         val decimalFormat =
-                DecimalFormat("###################.###########")
+                DecimalFormat(none)
         return decimalFormat.format(double)
     }
 
@@ -118,7 +119,7 @@ object DigitUtils{
         }
         val double = string2Double(amount)
         val decimalFormat =
-            DecimalFormat("###################.###########")
+            DecimalFormat(none)
         return decimalFormat.format(double)
     }
 

@@ -1,5 +1,6 @@
 package com.kiwilss.lutils.ktx
 
+import com.kiwilss.lutils.utils.UriUtils
 import java.util.regex.Pattern
 
 /**
@@ -294,3 +295,9 @@ fun CharSequence.isSpace() = matches(Regex(CharSequenceKtx.SPACE + "+"))
  *判断字符是否是空格
  */
 fun Char.isSpace() = this.toString().isHasSpace()
+
+/**
+ *通过 uri 解析网址各部分内容
+ * @param action
+ */
+fun CharSequence?.parseUrlByUri(action: String?) = UriUtils.parseUrlByUri(this?.toString(),action)
