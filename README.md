@@ -19,7 +19,6 @@ dependencies {
 使用前要调用，获取到 Context, 可以在 Application 里调用：
 ```
 object LUtilsConfig{
-​
     lateinit var mContext: Context
     fun init(context: Context) {
         mContext = context

@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.kiwilss.lutils.help.jump.makeCall
+import com.kiwilss.lutils.ui.BroadcastActivity
 import com.kiwilss.lutils.ui.TextViewActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -19,6 +20,7 @@ class MainActivity : AppCompatActivity() {
 
         btnMainCall.setOnClickListener {
             //makeCall("18657194108")
+            startActivity(Intent(this,BroadcastActivity::class.java))
         }
 
     }

@@ -5,30 +5,31 @@ import android.content.Context
 import android.content.Intent
 import androidx.fragment.app.FragmentActivity
 
-class ActivityHelper private constructor(activity: FragmentActivity) {
-    private val TAG = "MMMK"
-    var mContext: Activity? = null
+class ActivityHelper private constructor(val context: Context?) {
+    private val TAG = "ActivityHelper"
+
+    //    var mContext: Activity? = null
     private var mRouterFragment: RouterFragment? = null
 
     init {
-        mContext = activity
-        mRouterFragment = getRouterFragment(activity)
+        if (context is FragmentActivity) {
+            mRouterFragment = getRouterFragment(context)
+        }
     }
 
     companion object {
-        fun init(activity: FragmentActivity?): ActivityHelper? {
-            if (activity != null) return ActivityHelper(activity)
-            return null
-        }
+//        fun init(activity: FragmentActivity?): ActivityHelper {
+//            return ActivityHelper(activity)
+//        }
 
-        fun init(context: Context?): ActivityHelper? {
-            if (context is FragmentActivity) return ActivityHelper(context)
-            return null
+        fun init(context: Context?): ActivityHelper {
+            return ActivityHelper(context)
         }
     }
 
 
-    private fun getRouterFragment(activity: FragmentActivity): RouterFragment? {
+    private fun getRouterFragment(activity: FragmentActivity?): RouterFragment? {
+        if (activity == null) return null
         var routerFragment: RouterFragment? = findRouterFragment(activity)
         if (routerFragment == null) {
             //创建 fragment,加入当前 activity
@@ -53,15 +54,15 @@ class ActivityHelper private constructor(activity: FragmentActivity) {
         clazz: Class<*>,
         callback: ((Int, Intent?) -> Unit)?
     ) {
-        mContext?.run {
+        context?.run {
             val intent = Intent(this, clazz)
             startActivityForResult(intent, callback)
         }
     }
 
     inline fun <reified T> startActivityForResult(noinline callback: ((Int, Intent?) -> Unit)?) {
-        mContext?.run {
-            val intent = Intent(mContext, T::class.java)
+        context?.run {
+            val intent = Intent(context, T::class.java)
             startActivityForResult(intent, callback)
         }
     }
@@ -76,8 +77,8 @@ class ActivityHelper private constructor(activity: FragmentActivity) {
         vararg pair: Pair<String, Any?>,
         noinline callback: ((Int, Intent?) -> Unit)?
     ) {
-        if (mContext == null) return
-        val intent = Intent(mContext, T::class.java)
+        if (context == null) return
+        val intent = Intent(context, T::class.java)
         IntentKtx.addPair(intent, *pair)
         startActivityForResult(intent, callback)
     }
@@ -86,8 +87,8 @@ class ActivityHelper private constructor(activity: FragmentActivity) {
         noinline callback: ((Int, Intent?) -> Unit)?,
         vararg pair: Pair<String, Any?>
     ) {
-        if (mContext == null) return
-        val intent = Intent(mContext, T::class.java)
+        if (context == null) return
+        val intent = Intent(context, T::class.java)
         IntentKtx.addPair(intent, *pair)
         startActivityForResult(intent, callback)
     }
@@ -97,7 +98,7 @@ class ActivityHelper private constructor(activity: FragmentActivity) {
         vararg pair: Pair<String, Any?>,
         callback: ((Int, Intent?) -> Unit)?
     ) {
-        mContext?.run {
+        context?.run {
             val intent = Intent(this, clazz)
             IntentKtx.addPair(intent, *pair)
             startActivityForResult(intent, callback)
@@ -109,7 +110,7 @@ class ActivityHelper private constructor(activity: FragmentActivity) {
         callback: ((Int, Intent?) -> Unit)?,
         vararg pair: Pair<String, Any?>
     ) {
-        mContext?.run {
+        context?.run {
             val intent = Intent(this, clazz)
             IntentKtx.addPair(intent, *pair)
             startActivityForResult(intent, callback)

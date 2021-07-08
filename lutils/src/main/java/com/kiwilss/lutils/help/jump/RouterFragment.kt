@@ -13,7 +13,7 @@ class RouterFragment : Fragment() {
     private val mCodeGenerator: Random = Random()
 
     companion object {
-        fun newInstance(): RouterFragment? {
+        fun newInstance(): RouterFragment {
             return RouterFragment()
         }
     }

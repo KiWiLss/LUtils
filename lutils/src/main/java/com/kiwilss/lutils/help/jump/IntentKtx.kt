@@ -85,7 +85,7 @@ object IntentKtx {
  * @param T
  * @param pair
  */
-inline fun <reified T> Context.createIntentStart(vararg pair: Pair<String, Any?>) =
+inline fun <reified T> Context.createActivityIntent(vararg pair: Pair<String, Any?>) =
     Intent(this, T::class.java).apply {
         addPair(*pair)
     }
@@ -95,6 +95,12 @@ inline fun <reified T> Context.createIntentStart(vararg pair: Pair<String, Any?>
  */
 fun Context.createIntent(vararg pair: Pair<String, Any?>) = Intent().addPair(*pair)
 
+/**
+ *生成发送广播 intent,可以添加参数
+ * @param action
+ * @param pair
+ */
+fun Context.createBroadcastIntent(action: String, vararg pair: Pair<String, Any?>) = Intent(action).addPair(*pair)
 
 fun Intent?.addPair(vararg params: Pair<String, Any?>): Intent? {
     return this?.also { IntentKtx.addPair(it, *params) }
@@ -169,15 +175,15 @@ inline fun <reified T> Fragment?.startActivityK(vararg pair: Pair<String, Any?>)
  * Context扩展函数跳转
  */
 fun Context?.startActivityForResultK(clazz: Class<*>, callback: ((Int, Intent?) -> Unit)?) {
-    ActivityHelper.init(this)?.startActivityForResult(clazz, callback)
+    ActivityHelper.init(this).startActivityForResult(clazz, callback)
 }
 
 fun Context?.startActivityForResultK(intent: Intent, callback: ((Int, Intent?) -> Unit)?) {
-    ActivityHelper.init(this)?.startActivityForResult(intent, callback)
+    ActivityHelper.init(this).startActivityForResult(intent, callback)
 }
 
 inline fun <reified T> Context?.startActivityForResultK(noinline callback: ((Int, Intent?) -> Unit)?) {
-    ActivityHelper.init(this)?.startActivityForResult<T>(callback)
+    ActivityHelper.init(this).startActivityForResult<T>(callback)
 
 }
 
@@ -187,7 +193,7 @@ fun Context?.startActivityForResultK(
     callback: ((Int, Intent?) -> Unit)?
 ) {
     ActivityHelper.init(this)
-        ?.startActivityForResult(clazz, callback, *pair)
+        .startActivityForResult(clazz, callback, *pair)
 }
 
 inline fun <reified T> Context?.startActivityForResultK(
@@ -195,7 +201,7 @@ inline fun <reified T> Context?.startActivityForResultK(
     noinline callback: ((Int, Intent?) -> Unit)?
 ) {
     ActivityHelper.init(this)
-        ?.startActivityForResult<T>(callback, *pair)
+        .startActivityForResult<T>(callback, *pair)
 }
 
 
@@ -203,15 +209,15 @@ inline fun <reified T> Context?.startActivityForResultK(
  * 上述方法在 fragment 中扩展
  */
 fun Fragment?.startActivityForResultK(clazz: Class<*>, callback: ((Int, Intent?) -> Unit)?) {
-    ActivityHelper.init(this?.context)?.startActivityForResult(clazz, callback)
+    ActivityHelper.init(this?.context).startActivityForResult(clazz, callback)
 }
 
 fun Fragment?.startActivityForResultK(intent: Intent, callback: ((Int, Intent?) -> Unit)?) {
-    ActivityHelper.init(this?.context)?.startActivityForResult(intent, callback)
+    ActivityHelper.init(this?.context).startActivityForResult(intent, callback)
 }
 
 inline fun <reified T> Fragment?.startActivityForResultK(noinline callback: ((Int, Intent?) -> Unit)?) {
-    ActivityHelper.init(this?.context)?.startActivityForResult<T>(callback)
+    ActivityHelper.init(this?.context).startActivityForResult<T>(callback)
 }
 
 fun Fragment?.startActivityForResultK(
@@ -220,7 +226,7 @@ fun Fragment?.startActivityForResultK(
     callback: ((Int, Intent?) -> Unit)?
 ) {
     ActivityHelper.init(this?.context)
-        ?.startActivityForResult(clazz, callback, *pair)
+        .startActivityForResult(clazz, callback, *pair)
 }
 
 inline fun <reified T> Fragment?.startActivityForResultK(
@@ -228,7 +234,7 @@ inline fun <reified T> Fragment?.startActivityForResultK(
     noinline callback: ((Int, Intent?) -> Unit)?
 ) {
     ActivityHelper.init(this?.context)
-        ?.startActivityForResult<T>(callback, *pair)
+        .startActivityForResult<T>(callback, *pair)
 }
 
 /**
