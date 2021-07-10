@@ -53,3 +53,6 @@ object LUtilsConfig{
 
 ### 2.8 字符相关
 [CharSequence 相关扩展收集](https://www.yuque.com/bibly/selhsz/rkn7so)
+
+### 2.9 四大组件相关
+[BroadcastReceiver](https://www.yuque.com/bibly/selhsz/pl4fof)
