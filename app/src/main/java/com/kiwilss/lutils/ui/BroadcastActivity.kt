@@ -22,7 +22,6 @@ class BroadcastActivity: AppCompatActivity(R.layout.activity_broadcast) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
        btnSend.setOnClickListener {
             //发送广播信息
            sendBroadcast(createBroadcastIntent(action1,"broad" to "test broadcast"))
