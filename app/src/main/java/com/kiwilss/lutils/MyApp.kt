@@ -11,6 +11,6 @@ import android.app.Application
 class MyApp: Application() {
     override fun onCreate() {
         super.onCreate()
-        LUtilsConfig.init(this)
+//        LUtilsConfig.init(this)
     }
 }

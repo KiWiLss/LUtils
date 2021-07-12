@@ -34,4 +34,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     implementation 'com.google.code.gson:gson:2.8.6'
+    api 'com.tencent:mmkv-static:1.2.10'
+    implementation "androidx.startup:startup-runtime:1.0.0"
 }
