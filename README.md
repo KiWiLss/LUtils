@@ -44,6 +44,7 @@ dependencies {
 
 ### 2.7 数据库相关
 [SharedPreferences封装](https://www.yuque.com/bibly/selhsz/sd2w3g)
+
 [MMKV 封装使用](https://www.yuque.com/bibly/selhsz/cs0tdu)
 ### 2.8 字符相关
 [CharSequence 相关扩展收集](https://www.yuque.com/bibly/selhsz/rkn7so)
