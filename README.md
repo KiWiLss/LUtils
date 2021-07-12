@@ -14,7 +14,8 @@ dependencies {
             implementation 'com.github.KiWiLss:LUtils:1.1.0'
     }
 ```
-最新版:![](https://www.jitpack.io/v/KiWiLss/LUtils.svg)
+最新版:
+![](https://www.jitpack.io/v/KiWiLss/LUtils.svg)
 
 ## 二、包含内容
 ### 2.1 TextView 相关工具类
