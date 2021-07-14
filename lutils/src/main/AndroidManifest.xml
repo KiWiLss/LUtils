@@ -2,7 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.kiwilss.lutils">
 
-<application>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <application>
     <provider
         android:name="androidx.startup.InitializationProvider"
         android:authorities="${applicationId}.androidx-startup"

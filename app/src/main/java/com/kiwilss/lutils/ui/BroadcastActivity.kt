@@ -7,8 +7,8 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.kiwilss.lutils.R
-import com.kiwilss.lutils.help.jump.createBroadcastIntent
 import com.kiwilss.lutils.ktx.registerBroadcast
+import com.kiwilss.lutils.ktx.sendBroadcast
 import com.kiwilss.lutils.ktx.unregisterBroadcast
 import kotlinx.android.synthetic.main.activity_broadcast.*
 
@@ -24,7 +24,8 @@ class BroadcastActivity: AppCompatActivity(R.layout.activity_broadcast) {
 
        btnSend.setOnClickListener {
             //发送广播信息
-           sendBroadcast(createBroadcastIntent(action1,"broad" to "test broadcast"))
+//           sendBroadcast(createBroadcastIntent(action1,"broad" to "test broadcast"))
+           sendBroadcast(action1,"broad" to "test broadcast")
        }
 
 

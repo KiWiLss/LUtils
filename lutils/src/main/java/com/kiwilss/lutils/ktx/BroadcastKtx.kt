@@ -5,6 +5,7 @@ import android.content.Context
 
 import android.content.IntentFilter
 import androidx.fragment.app.Fragment
+import com.kiwilss.lutils.help.jump.createBroadcastIntent
 
 
 /**
@@ -44,6 +45,18 @@ object BroadcastKtx {
         if (context == null || broadcastReceiver == null) return
         context.unregisterReceiver(broadcastReceiver)
     }
+
+    /**
+     *发送广播
+     * @param context
+     * @param action
+     * @param pair
+     */
+    fun sendBroadcast(context: Context?, action: String?, vararg pair: Pair<String, Any?>) {
+        if (context == null || action.isNullOrEmpty()) return
+        context.sendBroadcast(context.createBroadcastIntent(action, *pair))
+    }
+
 }
 
 /**
@@ -84,3 +97,19 @@ fun Fragment?.registerBroadcast(
  */
 fun Fragment?.unregisterBroadcast(broadcastReceiver: BroadcastReceiver?) =
     BroadcastKtx.unregisterBroadcast(this?.context, broadcastReceiver)
+
+/**
+ *发送广播
+ * @param action
+ * @param pair
+ */
+fun Context?.sendBroadcast(action: String?, vararg pair: Pair<String, Any?>) =
+    BroadcastKtx.sendBroadcast(this, action, *pair)
+
+/**
+ *发送广播
+ * @param action
+ * @param pair
+ */
+fun Fragment?.sendBroadcast(action: String?, vararg pair: Pair<String, Any?>) =
+    BroadcastKtx.sendBroadcast(this?.context, action, *pair)
